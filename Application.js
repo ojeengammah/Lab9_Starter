@@ -1,7 +1,9 @@
 
 window.onload = function() 
 {
-window.addEventListener("error", () =>{
+window.addEventListener("error", (problem) =>{
+console.log("oops there is an error");
+console.error(problem);
 
 });
     let log = document.getElementById("log");
@@ -84,6 +86,13 @@ window.addEventListener("error", () =>{
     const fourth = () => { console.trace(); };
     first();
     });
+    let TGE = document.getElementById("TGE");
+    TGE.addEventListener("click",  
+    HandleBtnClick
+    );
 };
+function HandleBtnClick(){
+    let x = oops;
+}
 
 
