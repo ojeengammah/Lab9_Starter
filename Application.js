@@ -1,14 +1,49 @@
 
+class anyError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "anyError";
+    }
+  }
+
 window.onload = function() 
 {
 window.addEventListener("error", (problem) =>{
 console.log("oops there is an error");
 console.error(problem);
-
+// throw new anyError("test");
 });
+
+let form = document.querySelector('form');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  let output = document.querySelector('output');
+  let firstNum = document.querySelector('#first-num').value;
+  let secondNum = document.querySelector('#second-num').value;
+  let operator = document.querySelector('#operator').value;
+  try{
+    output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+  }
+  catch(err)
+  {
+    if (err instanceof anyError){
+    }
+    else {
+      output.innerHTML = "Invalid";
+      console.error(err);
+    }
+  }
+});
+
     let log = document.getElementById("log");
     log.addEventListener('click', () =>{
-        console.log("this is a log");
+    let output = document.querySelector('output');
+        if (output.innerHTML != ""){
+            console.log(`calculator contains:${output.innerHTML}`);
+        }
+        else {
+            console.log("this is a log");
+        }
     });
     let error = document.getElementById("error");
     error.addEventListener('click', () =>{
@@ -36,7 +71,6 @@ console.error(problem);
     dir.addEventListener('click', () =>{
         console.dir(dir);
     });
-    // check this
     let dirxml = document.getElementById("dirxml");
     dirxml.addEventListener('click', () =>{
         console.dirxml(dirxml);
@@ -95,4 +129,5 @@ function HandleBtnClick(){
     let x = oops;
 }
 
+// let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
