@@ -1,5 +1,5 @@
 
-class anyError extends Error {
+class ValidatieError extends Error {
     constructor(message) {
       super(message);
       this.name = "anyError";
@@ -9,9 +9,8 @@ class anyError extends Error {
 window.onload = function() 
 {
 window.addEventListener("error", (problem) =>{
-console.log("oops there is an error");
+console.log("Sadly an error happened my friend");
 console.error(problem);
-// throw new anyError("test");
 });
 
 let form = document.querySelector('form');
@@ -21,12 +20,28 @@ form.addEventListener('submit', e => {
   let firstNum = document.querySelector('#first-num').value;
   let secondNum = document.querySelector('#second-num').value;
   let operator = document.querySelector('#operator').value;
+  
   try{
-    output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+    let i = 0;
+    while(i<firstNum.length){
+      if (isNaN(firstNum.charAt(i))) {
+        throw new ValidatieError("First num is not valid")
+      }
+      i++;
+    }
+    i = 0;
+    while (i<secondNum.length) {
+      if (isNaN(secondNum.charAt(i))) {
+        throw new ValidatieError("Second num is not valid")
+      }
+      i++;
+    }
+  output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
   }
   catch(err)
   {
-    if (err instanceof anyError){
+    if (err instanceof ValidatieError){
+      throw new ValidatieError("Please enter a valid number");
     }
     else {
       output.innerHTML = "Invalid";
