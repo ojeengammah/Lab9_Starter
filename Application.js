@@ -10,7 +10,7 @@ window.onload = function()
 {
 window.addEventListener("error", (problem) =>{
 console.log("Sadly an error happened my friend");
-console.error(problem);
+// console.error(problem);
 });
 
 let form = document.querySelector('form');
