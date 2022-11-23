@@ -49,12 +49,11 @@ form.addEventListener('submit', e => {
     }
   }
 });
-
     let log = document.getElementById("log");
     log.addEventListener('click', () =>{
     let output = document.querySelector('output');
         if (output.innerHTML != ""){
-            console.log(`calculator contains:${output.innerHTML}`);
+            console.log(`Calculator Contains:${output.innerHTML}`);
         }
         else {
             console.log("this is a log");
