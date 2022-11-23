@@ -2,7 +2,7 @@
 class ValidatieError extends Error {
     constructor(message) {
       super(message);
-      this.name = "anyError";
+      this.name = "ValidatieError";
     }
   }
 
