@@ -10,7 +10,6 @@ window.onload = function()
 {
 window.addEventListener("error", (problem) =>{
 console.log("Sadly an error happened my friend");
-// console.error(problem);
 });
 
 let form = document.querySelector('form');
@@ -40,13 +39,8 @@ form.addEventListener('submit', e => {
   }
   catch(err)
   {
-    if (err instanceof ValidatieError){
-      throw new ValidatieError("Please enter a valid number");
-    }
-    else {
-      output.innerHTML = "Invalid";
-      console.error(err);
-    }
+    output.innerHTML = "Invalid";
+    console.error(err); 
   }
 });
     let log = document.getElementById("log");
